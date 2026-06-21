@@ -2,6 +2,7 @@ import Link from "next/link";
 import { GitBranch } from "lucide-react";
 
 const links = [
+  { href: "/generate-everything", label: "Generate Everything" },
   { href: "/commit-generator", label: "Commit Generator" },
   { href: "/branch-generator", label: "Branch Generator" },
   { href: "/gitignore-generator", label: "GitIgnore Generator" },

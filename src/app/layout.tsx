@@ -4,6 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { Toaster } from "@/components/ui/sonner";
+import { CommandPalette } from "@/components/command-palette";
 
 const ibmPlexSans = IBM_Plex_Sans({
   weight: ["400", "500", "600", "700"],
@@ -38,6 +39,7 @@ export default function RootLayout({
         <Toaster theme="dark" toastOptions={{
           className: "bg-[#161B22] border-[#30363D] text-[#E6EDF3] font-mono shadow-xl rounded-md",
         }} />
+        <CommandPalette />
       </body>
     </html>
   );

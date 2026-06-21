@@ -6,11 +6,12 @@ GitMate is a premium, open-source developer utility toolkit designed to streamli
 Developers spend countless hours debating branch names, structuring commit messages, and manually configuring gitignore templates. GitMate solves this problem by providing a centralized, lightning-fast toolkit that adheres to strict industry standards (like Conventional Commits) while offering a beautiful, GitHub-inspired interface.
 
 ### Key Features
+- **🚀 Generate Everything**: Instantly generate a commit, branch, project name, and tagline simultaneously from a single description.
 - **🤖 AI Commit Generator**: Convert plain English descriptions into strict Conventional Commits.
 - **🌱 AI Branch Generator**: Instantly generate clean, readable branch names (e.g., `feat/add-jwt-auth`).
 - **💡 AI Project Namer**: Brainstorm creative project names with taglines from simple prompts.
 - **📁 Local GitIgnore Generator**: Generate and download standard `.gitignore` files for various tech stacks.
-- **⚡ Developer-First UI**: A strict dark mode, strict monospace typography (`IBM Plex Mono`), and lightning-fast micro-interactions.
+- **⌨️ Developer-First UX**: Navigate globally with `⌘K`, use global keyboard shortcuts, and access Local History directly from the Command Palette.
 
 ---
 
@@ -19,6 +20,8 @@ Developers spend countless hours debating branch names, structuring commit messa
 *Screenshots will be added here.*
 
 - **Landing Page**: `[Placeholder: Landing Page Screenshot]`
+- **Generate Everything**: `[Placeholder: Generate Everything Screenshot]`
+- **Command Palette**: `[Placeholder: Command Palette Screenshot]`
 - **Commit Generator**: `[Placeholder: Commit Generator Screenshot]`
 - **Branch Generator**: `[Placeholder: Branch Generator Screenshot]`
 - **GitIgnore Generator**: `[Placeholder: GitIgnore Generator Screenshot]`
@@ -86,10 +89,19 @@ src/
 
 ## Usage Guide
 
-1. **Commit Generator**: Navigate to `/commit-generator`. Enter a description like "Added JWT login and fixed logout bug". The AI returns multiple Conventional Commit options. Click the copy icon to copy it to your clipboard.
-2. **Branch Generator**: Navigate to `/branch-generator`. Describe the feature you are building. The AI generates hyphenated, lowercase branch names (e.g., `feat/jwt-login`).
-3. **Project Name Generator**: Navigate to `/project-name-generator`. Describe your app idea to get catchy names and short taglines.
-4. **GitIgnore Generator**: Navigate to `/gitignore-generator`. Select your stack (e.g., Node.js, React). Instantly view the compiled `.gitignore` file and download it locally.
+1. **Generate Everything**: Navigate to `/generate-everything`. Enter your full task description to instantly receive all your git-related outputs at once, ready for "Copy All".
+2. **Command Palette**: Press `⌘ + K` (Mac) or `Ctrl + K` (Windows) anywhere to open the global command palette for quick navigation and copying historical outputs.
+3. **Commit Generator**: Navigate to `/commit-generator`. Enter a description like "Added JWT login and fixed logout bug". The AI returns multiple Conventional Commit options.
+4. **Branch Generator**: Navigate to `/branch-generator`. Describe the feature you are building. The AI generates hyphenated, lowercase branch names.
+5. **Project Name Generator**: Navigate to `/project-name-generator`. Describe your app idea to get catchy names and short taglines.
+6. **GitIgnore Generator**: Navigate to `/gitignore-generator`. Select your stack. Instantly view the compiled `.gitignore` file and download it locally.
+
+### Keyboard Shortcuts
+- `⌘ + K`: Open Command Palette
+- `⌘ + Enter`: Generate outputs
+- `⌘ + Shift + C`: Copy active output
+- `/`: Focus input textarea
+- `Escape`: Close modals and inputs
 
 ---
 

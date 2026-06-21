@@ -4,9 +4,10 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Technology, generateGitignore } from "@/lib/gitignore-templates";
-import { Copy, Download, Check, FileCode } from "lucide-react";
+import { Check, FileCode, Download } from "lucide-react";
 import { toast } from "sonner";
-import { Textarea } from "@/components/ui/textarea";
+import { Terminal } from "@/components/shared/terminal";
+import { useKeyboardShortcuts } from "@/hooks/use-keyboard-shortcuts";
 
 const ALL_TECHNOLOGIES: Technology[] = [
   "Node.js",
@@ -38,14 +39,11 @@ export default function GitIgnoreGenerator() {
     toast.success("GitIgnore generated successfully.");
   };
 
-  const handleCopy = () => {
-    if (!generatedContent) return;
-    navigator.clipboard.writeText(generatedContent);
-    toast.success("Copied to clipboard!");
-  };
-
   const handleDownload = () => {
-    if (!generatedContent) return;
+    if (!generatedContent) {
+      toast.error("Generate a file first!");
+      return;
+    }
     const blob = new Blob([generatedContent], { type: "text/plain" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
@@ -57,6 +55,10 @@ export default function GitIgnoreGenerator() {
     URL.revokeObjectURL(url);
     toast.success("Downloading .gitignore");
   };
+
+  useKeyboardShortcuts({
+    onGenerate: handleGenerate,
+  });
 
   return (
     <div className="w-full max-w-5xl py-12 mx-auto">
@@ -103,42 +105,15 @@ export default function GitIgnoreGenerator() {
           </CardFooter>
         </Card>
 
-        <div className="flex flex-col h-full bg-[#0D1117] border border-border rounded-xl shadow-sm overflow-hidden">
-          <div className="flex items-center px-4 py-2.5 border-b border-border bg-[#161B22] justify-between">
-            <div className="flex items-center gap-4">
-              <div className="flex gap-2">
-                <div className="w-3 h-3 rounded-full bg-[#30363D]"></div>
-                <div className="w-3 h-3 rounded-full bg-[#30363D]"></div>
-                <div className="w-3 h-3 rounded-full bg-[#30363D]"></div>
-              </div>
-              <div className="text-xs text-muted-foreground font-mono">.gitignore</div>
+        <div className="flex flex-col h-[500px] relative group/container">
+          <Terminal title=".gitignore" content={generatedContent} />
+          {generatedContent && (
+            <div className="absolute top-12 right-6">
+              <Button size="sm" className="gap-2 shadow-lg" onClick={handleDownload}>
+                <Download className="h-4 w-4" /> Download
+              </Button>
             </div>
-            {generatedContent && (
-              <div className="flex items-center gap-2">
-                <Button variant="ghost" size="icon" className="h-6 w-6 text-muted-foreground hover:text-foreground" onClick={handleCopy}>
-                  <Copy className="h-3.5 w-3.5" />
-                </Button>
-                <Button variant="ghost" size="icon" className="h-6 w-6 text-muted-foreground hover:text-foreground" onClick={handleDownload}>
-                  <Download className="h-3.5 w-3.5" />
-                </Button>
-              </div>
-            )}
-          </div>
-          
-          <div className="flex-1 p-0 relative">
-            {generatedContent ? (
-              <Textarea
-                value={generatedContent}
-                readOnly
-                className="w-full h-full min-h-[300px] font-mono text-sm resize-none bg-transparent border-0 focus-visible:ring-0 p-4 text-[#E6EDF3] leading-relaxed rounded-none"
-              />
-            ) : (
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-muted-foreground/50 gap-3">
-                <FileCode className="h-8 w-8 opacity-20" />
-                <p className="text-xs font-mono">Output will appear here</p>
-              </div>
-            )}
-          </div>
+          )}
         </div>
       </div>
     </div>
