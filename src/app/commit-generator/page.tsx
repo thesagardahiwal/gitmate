@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
-import { Copy, Loader2 } from "lucide-react";
+import { Copy, Loader2, TerminalSquare } from "lucide-react";
 import { toast } from "sonner";
 import { Skeleton } from "@/components/ui/skeleton";
 
@@ -36,7 +36,7 @@ export default function CommitGenerator() {
       }
 
       setResults(data.messages || []);
-      toast.success("Generated commit messages!");
+      toast.success("Generated commit messages successfully.");
     } catch (error: any) {
       toast.error(error.message);
     } finally {
@@ -50,65 +50,97 @@ export default function CommitGenerator() {
   };
 
   return (
-    <div className="container max-w-3xl py-12 px-4 mx-auto">
+    <div className="w-full max-w-4xl py-12 mx-auto">
       <div className="mb-8 space-y-2">
-        <h1 className="text-4xl font-bold tracking-tight">Commit Message Generator</h1>
-        <p className="text-lg text-muted-foreground">
-          Enter a plain English description of your changes, and we'll generate conventional commit messages.
+        <h1 className="text-3xl font-semibold tracking-tight">Commit Message Generator</h1>
+        <p className="text-muted-foreground">
+          Enter a plain English description of your changes to generate standard conventional commits.
         </p>
       </div>
 
-      <Card className="border-primary/20 shadow-sm mb-8">
-        <CardHeader>
-          <CardTitle>Describe your changes</CardTitle>
-          <CardDescription>What did you add, fix, or update?</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Textarea
-            placeholder='e.g., "Added JWT authentication and fixed login validation"'
-            className="min-h-[120px] resize-y"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </CardContent>
-        <CardFooter>
-          <Button onClick={handleGenerate} disabled={loading} className="w-full">
-            {loading ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Generating...
-              </>
-            ) : (
-              "Generate Commits"
-            )}
-          </Button>
-        </CardFooter>
-      </Card>
-
-      {(loading || results.length > 0) && (
-        <div className="space-y-4">
-          <h2 className="text-2xl font-semibold tracking-tight">Suggestions</h2>
-          
-          {loading ? (
-            <div className="space-y-3">
-              {[1, 2, 3].map((i) => (
-                <Skeleton key={i} className="h-16 w-full rounded-xl" />
-              ))}
-            </div>
-          ) : (
-            <div className="grid gap-3">
-              {results.map((commit, index) => (
-                <Card key={index} className="flex flex-row items-center justify-between p-4 bg-muted/50">
-                  <p className="font-mono text-sm break-all pr-4">{commit}</p>
-                  <Button variant="ghost" size="icon" onClick={() => handleCopy(commit)} className="shrink-0">
-                    <Copy className="h-4 w-4" />
-                  </Button>
-                </Card>
-              ))}
-            </div>
-          )}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="flex flex-col gap-6">
+          <Card className="border border-border bg-card shadow-sm rounded-xl overflow-hidden">
+            <CardHeader className="bg-secondary/30 border-b border-border pb-4">
+              <CardTitle className="text-base font-medium flex items-center gap-2">
+                <TerminalSquare className="h-4 w-4 text-muted-foreground" />
+                Task Description
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="pt-6">
+              <Textarea
+                placeholder="e.g., Added JWT authentication and fixed login validation"
+                className="min-h-[160px] resize-y bg-background font-mono text-sm border-border focus-visible:ring-1 focus-visible:ring-ring"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+              <div className="mt-2 flex items-center gap-2">
+                <span className="text-xs text-muted-foreground">Pro tip:</span>
+                <span className="text-xs font-mono text-muted-foreground/80 bg-secondary px-1.5 py-0.5 rounded border border-border">Be specific about what you changed</span>
+              </div>
+            </CardContent>
+            <CardFooter className="pt-0">
+              <Button onClick={handleGenerate} disabled={loading} className="w-full">
+                {loading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                    Generating...
+                  </>
+                ) : (
+                  "Generate Commits"
+                )}
+              </Button>
+            </CardFooter>
+          </Card>
         </div>
-      )}
+
+        <div className="flex flex-col h-full">
+          <div className="flex-1 bg-[#0D1117] border border-border rounded-xl shadow-sm overflow-hidden flex flex-col">
+            <div className="flex items-center px-4 py-2.5 border-b border-border bg-[#161B22]">
+              <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-[#30363D]"></div>
+                <div className="w-3 h-3 rounded-full bg-[#30363D]"></div>
+                <div className="w-3 h-3 rounded-full bg-[#30363D]"></div>
+              </div>
+              <div className="ml-4 text-xs text-muted-foreground font-mono">terminal - output</div>
+            </div>
+            
+            <div className="p-4 flex-1 flex flex-col font-mono text-sm overflow-y-auto">
+              {loading ? (
+                <div className="space-y-4">
+                  <Skeleton className="h-4 w-3/4 bg-muted" />
+                  <Skeleton className="h-4 w-1/2 bg-muted" />
+                  <Skeleton className="h-4 w-2/3 bg-muted" />
+                </div>
+              ) : results.length > 0 ? (
+                <div className="space-y-4">
+                  {results.map((commit, index) => (
+                    <div key={index} className="group flex items-start justify-between gap-4 py-2 border-b border-border/50 last:border-0">
+                      <div className="flex items-start gap-3">
+                        <span className="text-accent-foreground select-none">~</span>
+                        <span className="text-foreground break-all">{commit}</span>
+                      </div>
+                      <Button 
+                        variant="ghost" 
+                        size="icon" 
+                        onClick={() => handleCopy(commit)} 
+                        className="h-6 w-6 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-muted-foreground hover:text-foreground"
+                      >
+                        <Copy className="h-3.5 w-3.5" />
+                      </Button>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="flex-1 flex flex-col items-center justify-center text-muted-foreground/50 gap-3">
+                  <TerminalSquare className="h-8 w-8 opacity-20" />
+                  <p className="text-xs">Output will appear here</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

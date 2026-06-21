@@ -1,5 +1,8 @@
 export type Technology = "Node.js" | "React" | "Next.js" | "TypeScript" | "MongoDB" | "Express" | "Python";
 
+/**
+ * Dictionary mapping supported technologies to their respective standard .gitignore templates.
+ */
 export const gitignoreTemplates: Record<Technology, string> = {
   "Node.js": `
 # Node.js
@@ -82,6 +85,13 @@ ENV/
 `,
 };
 
+/**
+ * Compiles a single .gitignore file from an array of selected technologies.
+ * Automatically removes duplicate lines to keep the final output clean.
+ * 
+ * @param technologies - Array of selected technologies (e.g., ["Node.js", "React"])
+ * @returns A formatted string containing the combined .gitignore content.
+ */
 export const generateGitignore = (technologies: Technology[]): string => {
   if (technologies.length === 0) return "";
   

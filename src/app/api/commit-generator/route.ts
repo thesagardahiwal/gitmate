@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server";
 import { model } from "@/lib/gemini";
 
+/**
+ * POST handler for generating conventional commit messages.
+ * 
+ * @param req - The incoming Request object containing the task description.
+ * @returns A JSON response containing an array of generated commit strings.
+ */
 export async function POST(req: Request) {
   try {
     const { description } = await req.json();

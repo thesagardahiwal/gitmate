@@ -1,36 +1,123 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GitMate 🚀
 
-## Getting Started
+GitMate is a premium, open-source developer utility toolkit designed to streamline your daily Git workflow. Generate conventional commit messages, standard branch names, comprehensive `.gitignore` files, and catchy project names—all instantly using Google's Gemini AI.
 
-First, run the development server:
+## Why GitMate?
+Developers spend countless hours debating branch names, structuring commit messages, and manually configuring gitignore templates. GitMate solves this problem by providing a centralized, lightning-fast toolkit that adheres to strict industry standards (like Conventional Commits) while offering a beautiful, GitHub-inspired interface.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Key Features
+- **🤖 AI Commit Generator**: Convert plain English descriptions into strict Conventional Commits.
+- **🌱 AI Branch Generator**: Instantly generate clean, readable branch names (e.g., `feat/add-jwt-auth`).
+- **💡 AI Project Namer**: Brainstorm creative project names with taglines from simple prompts.
+- **📁 Local GitIgnore Generator**: Generate and download standard `.gitignore` files for various tech stacks.
+- **⚡ Developer-First UI**: A strict dark mode, strict monospace typography (`IBM Plex Mono`), and lightning-fast micro-interactions.
+
+---
+
+## Screenshots
+
+*Screenshots will be added here.*
+
+- **Landing Page**: `[Placeholder: Landing Page Screenshot]`
+- **Commit Generator**: `[Placeholder: Commit Generator Screenshot]`
+- **Branch Generator**: `[Placeholder: Branch Generator Screenshot]`
+- **GitIgnore Generator**: `[Placeholder: GitIgnore Generator Screenshot]`
+- **Project Name Generator**: `[Placeholder: Project Name Generator Screenshot]`
+
+---
+
+## Tech Stack
+- **Framework**: [Next.js 15 (App Router)](https://nextjs.org/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **Components**: [shadcn/ui](https://ui.shadcn.com/)
+- **AI**: [Google Generative AI (Gemini)](https://ai.google.dev/)
+- **Deployment**: Ready for [Vercel](https://vercel.com/)
+
+---
+
+## Installation & Local Setup
+
+### Prerequisites
+- Node.js >= 18.17.0
+- A Google Gemini API Key
+
+### Step-by-Step Guide
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/thesagardahiwal/gitmate.git
+   cd gitmate
+   ```
+
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+
+3. **Configure Environment Variables**:
+   Create a `.env.local` file in the root directory:
+   ```env
+   GEMINI_API=your_api_key_here
+   ```
+
+4. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
+
+## Project Structure
+A brief overview of the project's architecture:
+
+```text
+src/
+├── app/                  # Next.js App Router (Pages, Layouts, API Routes)
+│   ├── api/              # Backend API handlers for Gemini AI
+│   └── (routes)/         # Client-side Tool pages
+├── components/           # Reusable UI components (Navbar, Footer, shadcn)
+├── lib/                  # Utilities, Gemini service, and static templates
+└── styles/               # Global CSS and Tailwind directives (globals.css)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage Guide
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Commit Generator**: Navigate to `/commit-generator`. Enter a description like "Added JWT login and fixed logout bug". The AI returns multiple Conventional Commit options. Click the copy icon to copy it to your clipboard.
+2. **Branch Generator**: Navigate to `/branch-generator`. Describe the feature you are building. The AI generates hyphenated, lowercase branch names (e.g., `feat/jwt-login`).
+3. **Project Name Generator**: Navigate to `/project-name-generator`. Describe your app idea to get catchy names and short taglines.
+4. **GitIgnore Generator**: Navigate to `/gitignore-generator`. Select your stack (e.g., Node.js, React). Instantly view the compiled `.gitignore` file and download it locally.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment Guide
+GitMate is optimized for zero-config deployment on Vercel.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Push your code to a GitHub repository.
+2. Log into [Vercel](https://vercel.com/) and click **Add New Project**.
+3. Import your GitHub repository.
+4. In the **Environment Variables** section, add your `GEMINI_API`.
+5. Click **Deploy**. Vercel will automatically detect the Next.js framework and build the project.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Future Improvements (v2)
+- Add GitHub OAuth to directly commit and push changes to linked repositories.
+- Custom templates for Commit Generation (e.g., Jira ticket formatting).
+- Browser Extension to suggest branch names directly inside Jira/Linear.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Author
+
+**Sagar Dahiwal**
+- **Email**: dahiwalsagar07@gmail.com
+- **GitHub**: [@thesagardahiwal](https://github.com/thesagardahiwal)
+- **Website**: [Digital Heroes](https://digitalheroesco.com)
+
+---
+
+> Built with ❤️ for developers who love clean Git logs.
