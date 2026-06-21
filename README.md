@@ -19,13 +19,14 @@ Developers spend countless hours debating branch names, structuring commit messa
 
 *Screenshots will be added here.*
 
-- **Landing Page**: `[Placeholder: Landing Page Screenshot]`
-- **Generate Everything**: `[Placeholder: Generate Everything Screenshot]`
-- **Command Palette**: `[Placeholder: Command Palette Screenshot]`
-- **Commit Generator**: `[Placeholder: Commit Generator Screenshot]`
-- **Branch Generator**: `[Placeholder: Branch Generator Screenshot]`
-- **GitIgnore Generator**: `[Placeholder: GitIgnore Generator Screenshot]`
-- **Project Name Generator**: `[Placeholder: Project Name Generator Screenshot]`
+- **Landing Page**: <img width="1552" height="982" alt="Screenshot 2026-06-21 at 16 12 41" src="https://github.com/user-attachments/assets/b245ed48-88a3-4c08-a2fc-c76665adedc3" />
+
+- **Generate Everything**: <img width="1552" height="982" alt="Screenshot 2026-06-21 at 16 27 54" src="https://github.com/user-attachments/assets/a505c59a-983e-46f8-8b74-0ca70922188b" />
+- **Commit Generator**: <img width="1552" height="982" alt="Screenshot 2026-06-21 at 16 12 45" src="https://github.com/user-attachments/assets/42ac38c1-c947-4b83-8a80-eba3abf513ed" />
+- **Branch Generator**: <img width="1552" height="982" alt="Screenshot 2026-06-21 at 16 12 48" src="https://github.com/user-attachments/assets/a3d56c17-fc81-4b0c-a137-8fa25c43e96c" />
+
+- **GitIgnore Generator**: <img width="1552" height="982" alt="Screenshot 2026-06-21 at 16 12 50" src="https://github.com/user-attachments/assets/15329a38-1324-4481-a764-d8504bff92e2" />
+- **Project Name Generator**: <img width="1552" height="982" alt="Screenshot 2026-06-21 at 16 12 54" src="https://github.com/user-attachments/assets/5907616a-36f5-4076-a24d-c365d5adec82" />
 
 ---
 
